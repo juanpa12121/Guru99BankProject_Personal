@@ -1,4 +1,4 @@
-package co.com.bancolombia.certification.utils;
+package co.com.bancolombia.certification.guru99.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

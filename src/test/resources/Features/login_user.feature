@@ -6,11 +6,11 @@ Feature: Successfully login user
   Scenario Outline: Login an existing user successfully
     Given I am on the login page
     When I enter valid credentials
-      | userId   | password   |
-      | <userId> | <password> |
+      | id   | password   |
+      | <id> | <password> |
 
     Then I should be logged successfully and I see the welcome message
 
     Examples:
-      | userId     | password |
+      | id         | password |
       | mngr485981 | AhatYsA  |
