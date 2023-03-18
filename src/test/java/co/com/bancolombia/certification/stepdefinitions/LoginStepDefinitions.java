@@ -18,10 +18,14 @@ import static co.com.bancolombia.certification.utils.Constants.URL;
 
 public class LoginStepDefinitions {
 
-    @Given("^I am on the login page$")
-    public void iAmOnTheLoginPage() {
+    @Before
+    public void setUp(){
         OnStage.setTheStage(Cast.ofStandardActors());
         OnStage.theActorCalled(ACTOR_NAME);
+    }
+
+    @Given("^I am on the login page$")
+    public void iAmOnTheLoginPage() {
         OnStage.theActorInTheSpotlight().can(BrowseTheWeb.with(MyDriversWeb.web().inThePageWeb(URL)));
     }
 
