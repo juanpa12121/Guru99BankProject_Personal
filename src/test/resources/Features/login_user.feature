@@ -14,3 +14,7 @@ Feature: Successfully login user
     Examples:
       | id         | password |
       | mngr485981 | AhatYsA  |
+      | mngr486149 | tAtUpYz  |
+      | mngr486167 | dasUzAg  |
+      | mngr485965 | mErAhev  |
+      | mngr486180 | asuvAta  |
