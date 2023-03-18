@@ -1,4 +1,4 @@
-package co.com.bancolombia.certification.utils;
+package co.com.bancolombia.certification.guru99.utils;
 
 public class Constants {
     public static final String ACTOR_NAME = "Juan Pablo";
