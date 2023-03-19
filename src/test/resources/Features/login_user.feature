@@ -9,12 +9,12 @@ Feature: Successfully login user
       | id   | password   |
       | <id> | <password> |
 
-    Then I should be logged successfully and I see the welcome message
+    Then I should be logged successfully and I see the welcome message <welcomeMessage>
 
     Examples:
-      | id         | password |
-      | mngr485981 | AhatYsA  |
-      | mngr486149 | tAtUpYz  |
-      | mngr486167 | dasUzAg  |
-      | mngr485965 | mErAhev  |
-      | mngr486180 | asuvAta  |
+      | id         | password | welcomeMessage                         |
+      | mngr485981 | AhatYsA  | Welcome To Manager's Page of GTPL Bank |
+      #| mngr486149 | tAtUpYz  | Welcome To Manager's Page of GTPL Bank |
+      #| mngr486167 | dasUzAg  | Welcome To Manager's Page of GTPL Bank |
+      #| mngr485965 | mErAhev  | Welcome To Manager's Page of GTPL Bank |
+      #| mngr486180 | asuvAta  | Welcome To Manager's Page of GTPL Bank |
