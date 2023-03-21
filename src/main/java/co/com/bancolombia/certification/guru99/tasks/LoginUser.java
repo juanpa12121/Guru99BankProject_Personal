@@ -15,9 +15,9 @@ import java.util.List;
 
 public class LoginUser implements Task {
 
-    List<DataLogin> data;
+    private DataLogin data;
 
-    public LoginUser(List<DataLogin> data) {
+    public LoginUser(DataLogin data) {
         this.data = data;
     }
 
@@ -25,13 +25,13 @@ public class LoginUser implements Task {
     public <T extends Actor> void performAs(T actor) {
 
         actor.attemptsTo(
-                Enter.theValue(data.get(0).getId()).into(INPUT_USERID),
-                Enter.theValue(data.get(0).getPassword()).into(INPUT_PASSWORD),
+                Enter.theValue(data.getId()).into(INPUT_USERID),
+                Enter.theValue(data.getPassword()).into(INPUT_PASSWORD),
                 Click.on(BTN_LOGIN)
         );
     }
 
-    public static LoginUser login(List<DataLogin> data){
+    public static LoginUser login(DataLogin data){
         return instrumented(LoginUser.class, data);
     }
 }

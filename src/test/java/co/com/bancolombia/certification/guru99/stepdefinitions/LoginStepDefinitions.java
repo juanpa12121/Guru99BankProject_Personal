@@ -1,5 +1,6 @@
 package co.com.bancolombia.certification.guru99.stepdefinitions;
 
+import co.com.bancolombia.certification.guru99.questions.ValidateAlertLoginFailed;
 import co.com.bancolombia.certification.guru99.questions.ValidateWelcomeMessage;
 import co.com.bancolombia.certification.guru99.tasks.LoginUser;
 import co.com.bancolombia.certification.guru99.tasks.SeeHomeLeftOptions;
@@ -9,6 +10,8 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
@@ -42,8 +45,8 @@ public class LoginStepDefinitions {
     }
 
     @When("^I enter valid credentials$")
-    public void iEnterValidCredentials(List<DataLogin> data) {
-        OnStage.theActorInTheSpotlight().attemptsTo(LoginUser.login(data));
+    public void iEnterValidCredentials(List<DataLogin> dataLoginList) {
+        OnStage.theActorInTheSpotlight().attemptsTo(LoginUser.login(dataLoginList.get(0)));
     }
 
     @Then("^I should be logged successfully and I see the welcome message (.*)$")
@@ -58,20 +61,15 @@ public class LoginStepDefinitions {
     }
 
     @When("^I enter non-existent user credentials$")
-    public void iEnterNonExistentUserCredentials(List<DataLogin> data) throws InterruptedException {
-        OnStage.theActorInTheSpotlight().attemptsTo(LoginUser.login(data));
+    public void iEnterNonExistentUserCredentials(List<DataLogin> dataLoginList) throws InterruptedException {
+        OnStage.theActorInTheSpotlight().attemptsTo(LoginUser.login(dataLoginList.get(0)));
         Thread.sleep(5000);
     }
 
-    @Then("^I should see an alert with the message$")
-    public void iShouldSeeAnAlertWithTheMessage() throws InterruptedException {
-        Thread.sleep(5000);
-        Alert alert = driver.switchTo().alert();
-        Thread.sleep(5000);
-        String alertText = alert.getText();
-        System.out.println("Alert data: " + alertText);
-        alert.accept();
-        driver.switchTo().defaultContent();
-        driver.close();
+    @Then("^I should see an alert with the message (.*)$")
+    public void iShouldSeeAnAlertWithTheMessage(String expectedMessage) throws InterruptedException {
+        theActorInTheSpotlight().should(
+                GivenWhenThen.seeThat(ValidateAlertLoginFailed.isVisible(), Matchers.equalTo(expectedMessage))
+        );
     }
 }
