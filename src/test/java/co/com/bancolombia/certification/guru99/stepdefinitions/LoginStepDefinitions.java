@@ -2,8 +2,8 @@ package co.com.bancolombia.certification.guru99.stepdefinitions;
 
 import co.com.bancolombia.certification.guru99.questions.ValidateWelcomeMessage;
 import co.com.bancolombia.certification.guru99.tasks.LoginUser;
+import co.com.bancolombia.certification.guru99.tasks.SeeHomeLeftOptions;
 import co.com.bancolombia.certification.guru99.utils.Constants;
-import co.com.bancolombia.certification.guru99.utils.MyDriversWeb;
 import co.com.bancolombia.certification.guru99.models.DataLogin;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -19,6 +19,7 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.thucydides.core.annotations.Managed;
 import org.hamcrest.Matchers;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -40,7 +41,6 @@ public class LoginStepDefinitions {
         OnStage.theActorInTheSpotlight().wasAbleTo(Open.url(URL_PAGE));
     }
 
-
     @When("^I enter valid credentials$")
     public void iEnterValidCredentials(List<DataLogin> data) {
         OnStage.theActorInTheSpotlight().attemptsTo(LoginUser.login(data));
@@ -50,5 +50,28 @@ public class LoginStepDefinitions {
     public void iShouldBeLoggedSuccessfullyAndISeeTheWelcomeMessage(String welcomeMessage) {
         theActorInTheSpotlight().should(seeThat(ValidateWelcomeMessage.isVisible(), Matchers.equalTo(welcomeMessage)));
 
+    }
+
+    @Then("^I validate that list of left elements are displayed$")
+    public void iValidateThatListOfLeftElementsAreDisplayed() {
+        theActorInTheSpotlight().attemptsTo(SeeHomeLeftOptions.seeLeftOptions());
+    }
+
+    @When("^I enter non-existent user credentials$")
+    public void iEnterNonExistentUserCredentials(List<DataLogin> data) throws InterruptedException {
+        OnStage.theActorInTheSpotlight().attemptsTo(LoginUser.login(data));
+        Thread.sleep(5000);
+    }
+
+    @Then("^I should see an alert with the message$")
+    public void iShouldSeeAnAlertWithTheMessage() throws InterruptedException {
+        Thread.sleep(5000);
+        Alert alert = driver.switchTo().alert();
+        Thread.sleep(5000);
+        String alertText = alert.getText();
+        System.out.println("Alert data: " + alertText);
+        alert.accept();
+        driver.switchTo().defaultContent();
+        driver.close();
     }
 }
