@@ -1,0 +1,72 @@
+Plan de Pruebas Guru99
+
+URL: https://demo.guru99.com/V1/index.php
+
+Contexto general:
+Con la HU se espera realizar exitosamente el login de usuario, el ingreso a la aplciación y la validación del mensaje de bienvenida al ingresar.
+
+Alcance:
+* Verificar que el login funcione correctamente ingresando credenciales válidas
+* Validar el mensaje de bienvenida al realizar el login.
+* Validar que la lista de opciones sea la correcta al realizar el login.
+* Validar el mensaje de alerta al realizar un login con credenciales inválidas.
+
+Estategia:
+Para las pruebas definidas en el alcance, se usarán pruebas funcionales End to End (automatizadas), de forma que se pueda abarcar todo el funcionamiento del sistema. Usaré herramientas como Selenium, Cucumber, lenguaje Java, lenguaje Gherkin y el patrón de diseño Screenplay.
+
+Feature: Successfully login user
+  Me as QA Analyst
+  I need to login user
+  To validate that user log in successfully and show welcome message
+
+  Background: Go to Login page
+    Given I am on the login page
+
+  Scenario Outline: Login an existing user successfully
+    When I enter valid credentials
+      | id   | password   |
+      | <id> | <password> |
+
+    Then I should be logged successfully and I see the welcome message <welcomeMessage>
+    And I validate that list of left elements are displayed
+
+    Examples:
+      | id         | password | welcomeMessage                         |
+      | mngr485981 | AhatYsA  | Welcome To Manager's Page of GTPL Bank |
+      #| mngr486149 | tAtUpYz  | Welcome To Manager's Page of GTPL Bank |
+      #| mngr486167 | dasUzAg  | Welcome To Manager's Page of GTPL Bank |
+      #| mngr485965 | mErAhev  | Welcome To Manager's Page of GTPL Bank |
+      #| mngr486180 | asuvAta  | Welcome To Manager's Page of GTPL Bank |
+
+  Scenario Outline: Try to login an non-existing user
+    When I enter non-existent user credentials
+      | id   | password   |
+      | <id> | <password> |
+
+    Then I should see an alert with the message <alertMessage>
+
+    Examples:
+      | id     | password | alertMessage      |
+      | juanpa | AhatYsA  | User is not valid |
+
+
+
+userId
+//input[@name='uid']
+
+password
+//input[@name='password']
+
+btnLogin
+//input[@name='btnLogin']
+
+Welcome message
+//marquee[@class='heading3']
+
+Each option of Left Home Menu
+//ul[@class='menusubnav']//li
+
+
+
+
+
