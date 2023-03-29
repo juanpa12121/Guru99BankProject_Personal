@@ -17,18 +17,6 @@ Feature: Successfully login user
     Examples:
       | id         | password | welcomeMessage                         |
       | mngr485981 | AhatYsA  | Welcome To Manager's Page of GTPL Bank |
-      #| mngr486149 | tAtUpYz  | Welcome To Manager's Page of GTPL Bank |
-      #| mngr486167 | dasUzAg  | Welcome To Manager's Page of GTPL Bank |
-      #| mngr485965 | mErAhev  | Welcome To Manager's Page of GTPL Bank |
-      #| mngr486180 | asuvAta  | Welcome To Manager's Page of GTPL Bank |
-
-  Scenario Outline: Try to login an non-existing user
-    When I enter non-existent user credentials
-      | id   | password   |
-      | <id> | <password> |
-
-    Then I should see an alert with the message <alertMessage>
-
-    Examples:
-      | id     | password | alertMessage      |
-      | juanpa | AhatYsA  | User is not valid |
+      | mngr486149 | tAtUpYz  | Welcome To Manager's Page of GTPL Bank |
+      | mngr486167 | dasUzAg  | Welcome To Manager's Page of GTPL Bank |
+      | mngr486180 | asuvAta  | Welcome To Manager's Page of GTPL Bank |

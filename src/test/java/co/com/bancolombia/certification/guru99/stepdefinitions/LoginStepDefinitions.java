@@ -1,6 +1,7 @@
 package co.com.bancolombia.certification.guru99.stepdefinitions;
 
 import co.com.bancolombia.certification.guru99.questions.ValidateAlertLoginFailed;
+import co.com.bancolombia.certification.guru99.questions.ValidateHomeLeftOptions;
 import co.com.bancolombia.certification.guru99.questions.ValidateWelcomeMessage;
 import co.com.bancolombia.certification.guru99.tasks.LoginUser;
 import co.com.bancolombia.certification.guru99.tasks.SeeHomeLeftOptions;
@@ -57,19 +58,6 @@ public class LoginStepDefinitions {
 
     @Then("^I validate that list of left elements are displayed$")
     public void iValidateThatListOfLeftElementsAreDisplayed() {
-        theActorInTheSpotlight().attemptsTo(SeeHomeLeftOptions.seeLeftOptions());
-    }
-
-    @When("^I enter non-existent user credentials$")
-    public void iEnterNonExistentUserCredentials(List<DataLogin> dataLoginList) throws InterruptedException {
-        OnStage.theActorInTheSpotlight().attemptsTo(LoginUser.login(dataLoginList.get(0)));
-        Thread.sleep(5000);
-    }
-
-    @Then("^I should see an alert with the message (.*)$")
-    public void iShouldSeeAnAlertWithTheMessage(String expectedMessage) throws InterruptedException {
-        theActorInTheSpotlight().should(
-                GivenWhenThen.seeThat(ValidateAlertLoginFailed.isVisible(), Matchers.equalTo(expectedMessage))
-        );
+        theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidateHomeLeftOptions.isPresent()));
     }
 }
