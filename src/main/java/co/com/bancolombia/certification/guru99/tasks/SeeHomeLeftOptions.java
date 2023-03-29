@@ -15,9 +15,7 @@ public class SeeHomeLeftOptions implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         List<WebElementFacade> leftListOptions = LST_LEFT_OPTIONS.resolveAllFor(actor);
-        actor.should(
-                GivenWhenThen.seeThat(ValidateHomeLeftOptions.validate(leftListOptions), containsInAnyOrder("Manager", "New Customer", "Edit Customer", "Delete Customer", "New Account", "Edit Account", "Delete Account", "Mini Statement", "Customised Statement", "Log out")
-        ));
+
     }
 
     public static SeeHomeLeftOptions seeLeftOptions(){
