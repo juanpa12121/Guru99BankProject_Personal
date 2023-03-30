@@ -4,12 +4,12 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import java.util.List;
 
-public class ConvertWebElementToText {
+public class OperationOnList {
 
     public static List<String> getTextLeftOptions(List<WebElementFacade> listOptions, List<String> stringList ){
         for(WebElementFacade element: listOptions){
             stringList.add(element.getTextValue());
         }
-        return stringList;
+        return stringList; //stringList es la nueva lista con los textos de los WebElements
     }
 }

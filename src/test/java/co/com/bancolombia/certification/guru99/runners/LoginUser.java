@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/Features/login_user.feature",
         glue = "co.com.bancolombia.certification.guru99.stepdefinitions",
-        snippets = SnippetType.CAMELCASE
+        snippets = SnippetType.CAMELCASE,
+        tags = "@TestCase2"
 )
 public class LoginUser {
 }
