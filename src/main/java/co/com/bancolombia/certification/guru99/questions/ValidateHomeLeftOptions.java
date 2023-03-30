@@ -6,6 +6,8 @@ import co.com.bancolombia.certification.guru99.utils.OperationOnList;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +39,10 @@ public class ValidateHomeLeftOptions implements Question<Boolean> {
             System.out.println(string);
         }
 
-        return textLeftoptionsFromCsv.equals(textLeftOptionsFromPage);
+        return textLeftOptionsFromPage.equals(textLeftoptionsFromCsv);
     }
 
-    public static ValidateHomeLeftOptions isPresent() {
+    public static ValidateHomeLeftOptions isEquals() {
         return new ValidateHomeLeftOptions();
     }
 }
