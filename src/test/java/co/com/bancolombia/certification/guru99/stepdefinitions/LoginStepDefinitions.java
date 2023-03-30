@@ -1,29 +1,23 @@
 package co.com.bancolombia.certification.guru99.stepdefinitions;
-
-import co.com.bancolombia.certification.guru99.questions.ValidateAlertLoginFailed;
 import co.com.bancolombia.certification.guru99.questions.ValidateHomeLeftOptions;
 import co.com.bancolombia.certification.guru99.questions.ValidateWelcomeMessage;
 import co.com.bancolombia.certification.guru99.tasks.LoginUser;
-import co.com.bancolombia.certification.guru99.tasks.SeeHomeLeftOptions;
 import co.com.bancolombia.certification.guru99.utils.Constants;
 import co.com.bancolombia.certification.guru99.models.DataLogin;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
-
 import static co.com.bancolombia.certification.guru99.utils.Constants.URL_PAGE;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.thucydides.core.annotations.Managed;
 import org.hamcrest.Matchers;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -53,11 +47,10 @@ public class LoginStepDefinitions {
     @Then("^I should be logged successfully and I see the welcome message (.*)$")
     public void iShouldBeLoggedSuccessfullyAndISeeTheWelcomeMessage(String welcomeMessage) {
         theActorInTheSpotlight().should(seeThat(ValidateWelcomeMessage.isVisible(), Matchers.equalTo(welcomeMessage)));
-
     }
 
-    @Then("^I validate that list of left elements are displayed$")
-    public void iValidateThatListOfLeftElementsAreDisplayed() {
+    @Then("^I validate that list of left menu options are displayed$")
+    public void iValidateThatListOfLeftMenuOptionsAreDisplayed() {
         theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidateHomeLeftOptions.isPresent()));
     }
 }
