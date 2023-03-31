@@ -10,6 +10,8 @@ Alcance:
 * Validar el mensaje de bienvenida al realizar el login.
 * Validar que la lista de opciones sea la correcta al realizar el login.
 
+Fuera del alcance:
+
 Estategia:
 Para las pruebas definidas en el alcance, se usarán pruebas funcionales End to End (automatizadas), de forma que se pueda abarcar todo el funcionamiento del sistema. Usaré herramientas como Selenium, Cucumber, lenguaje Java, lenguaje Gherkin y el patrón de diseño Screenplay.
 

@@ -17,9 +17,9 @@ Feature: Successfully login user
     Examples:
       | id         | password | welcomeMessage                         |
       | mngr485981 | AhatYsA  | Welcome To Manager's Page of GTPL Bank |
-      #| mngr486149 | tAtUpYz  | Welcome To Manager's Page of GTPL Bank |
-      #| mngr486167 | dasUzAg  | Welcome To Manager's Page of GTPL Bank |
-      #| mngr486180 | asuvAta  | Welcome To Manager's Page of GTPL Bank |
+      | mngr486149 | tAtUpYz  | Welcome To Manager's Page of GTPL Bank |
+      | mngr486167 | dasUzAg  | Welcome To Manager's Page of GTPL Bank |
+      | mngr486180 | asuvAta  | Welcome To Manager's Page of GTPL Bank |
 
   @TestCase2
   Scenario Outline: Validate that list of left menu options are displayed
