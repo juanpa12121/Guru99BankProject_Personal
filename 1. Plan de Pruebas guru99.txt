@@ -9,7 +9,8 @@ Alcance:
 * Verificar que el login funcione correctamente ingresando credenciales válidas
 * Validar el mensaje de bienvenida al realizar el login.
 * Validar que la lista de opciones sea la correcta al realizar el login.
-* Validar el mensaje de alerta al realizar un login con credenciales inválidas.
+
+Fuera del alcance:
 
 Estategia:
 Para las pruebas definidas en el alcance, se usarán pruebas funcionales End to End (automatizadas), de forma que se pueda abarcar todo el funcionamiento del sistema. Usaré herramientas como Selenium, Cucumber, lenguaje Java, lenguaje Gherkin y el patrón de diseño Screenplay.
@@ -22,6 +23,7 @@ Feature: Successfully login user
   Background: Go to Login page
     Given I am on the login page
 
+  @TestCase1
   Scenario Outline: Login an existing user successfully
     When I enter valid credentials
       | id   | password   |
@@ -38,35 +40,14 @@ Feature: Successfully login user
       #| mngr485965 | mErAhev  | Welcome To Manager's Page of GTPL Bank |
       #| mngr486180 | asuvAta  | Welcome To Manager's Page of GTPL Bank |
 
-  Scenario Outline: Try to login an non-existing user
-    When I enter non-existent user credentials
+  @TestCase2
+  Scenario Outline: Validate that list of left menu options are displayed
+    When I enter valid credentials
       | id   | password   |
       | <id> | <password> |
 
-    Then I should see an alert with the message <alertMessage>
+    Then I validate that list of left menu options are displayed
 
     Examples:
-      | id     | password | alertMessage      |
-      | juanpa | AhatYsA  | User is not valid |
-
-
-
-userId
-//input[@name='uid']
-
-password
-//input[@name='password']
-
-btnLogin
-//input[@name='btnLogin']
-
-Welcome message
-//marquee[@class='heading3']
-
-Each option of Left Home Menu
-//ul[@class='menusubnav']//li
-
-
-
-
-
+      | id         | password |
+      | mngr485981 | AhatYsA  |

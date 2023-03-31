@@ -1,0 +1,20 @@
+Plan de Pruebas GURU99BANKPROJECT
+
+URL: https://demo.guru99.com/V1/index.php
+
+Contexto general:
+Con la HU se espera validar el logueo de usuarios de forma correcta, el mensaje de bienvenida y la lista de opciones de la página principal.
+
+Alcance:
+* Verificar que el login funcione correctamente ingresando credenciales válidas
+* Validar el mensaje de bienvenida al efectuar el login.
+* Validar que la lista de opciones sea la correcta al efectuar el login.
+
+
+Fuera del alcance:
+- Validaciones de creación de cuenta.
+- Validaciones de otras secciones de la página
+
+
+Estategia:
+Para las pruebas definidas en el alcance, se usarán pruebas funcionales End to End (automatizadas), de forma que se pueda abarcar todo el funcionamiento del sistema. Usaré herramientas como Selenium, Cucumber, lenguaje Java, lenguaje Gherkin y el patrón de diseño Screenplay.
